@@ -7,7 +7,7 @@ import pytest
 
 def test_daily_mean_zeros():
     """Test that mean function works for an array of zeros."""
-    from models import daily_mean
+    from inflammation.models import daily_mean
 
     test_input = np.array([[0, 0],
                            [0, 0],
@@ -20,7 +20,7 @@ def test_daily_mean_zeros():
 
 def test_daily_mean_integers():
     """Test that mean function works for an array of positive integers."""
-    from models import daily_mean
+    from inflammation.models import daily_mean
 
     test_input = np.array([[1, 2],
                            [3, 4],
@@ -32,7 +32,7 @@ def test_daily_mean_integers():
 
 def test_daily_max():
     """Test that max function works for an array of positive integers."""
-    from models import daily_max
+    from inflammation.models import daily_max
 
     test_input = np.array([[1, 2],
                            [3, 4],
@@ -44,7 +44,7 @@ def test_daily_max():
 
 def test_daily_min():
     """Test that min function works for an array of positive integers."""
-    from models import daily_min
+    from inflammation.models import daily_min
 
     test_input = np.array([[1, 2],
                            [3, 4],
@@ -57,7 +57,7 @@ def test_daily_min():
 
 def test_daily_min_string():
     """Test for TypeError when passing strings"""
-    from models import daily_min
+    from inflammation.models import daily_min
 
     with pytest.raises(TypeError):
         error_expected = daily_min([['Hello', 'there'], ['General', 'Kenobi']])
@@ -78,7 +78,7 @@ def test_daily_min_string():
 def test_patient_normalise(test, expected, expect_raises):
     """Test normalisation works for arrays of one and positive integers.
        Assumption that test accuracy of two decimal places is sufficient."""
-    from models import patient_normalise
+    from inflammation.models import patient_normalise
     if expect_raises is not None:
         with pytest.raises(expect_raises):
             npt.assert_almost_equal(patient_normalise(np.array(test)), np.array(expected), decimal=2)

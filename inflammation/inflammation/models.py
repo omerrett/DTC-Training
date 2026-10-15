@@ -8,7 +8,6 @@ and each column represents a single day across all patients.
 """
 
 import numpy as np
-import pytest
 
 
 def load_csv(filename):
@@ -39,9 +38,9 @@ def patient_normalise(data):
     NaN values are ignored, normalised to 0.
     Negative values rounded to 0.
     """
-    max = np.nanmax(data, axis=1)
+    max_data = np.nanmax(data, axis=1)
     with np.errstate(invalid ='ignore', divide = 'ignore'):
-        normalised = data / max[:, np.newaxis]
+        normalised = data / max_data[:, np.newaxis]
     normalised[np.isnan(normalised)] = 0
     normalised[normalised < 0] = 0
 
@@ -49,4 +48,3 @@ def patient_normalise(data):
         raise ValueError('Inflammation values should not be negative')
 
     return normalised
-
